@@ -61,14 +61,12 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
         print(
             "Error uploading image. Status code: ${response.statusCode}, ${response.headers}");
       }
-      setState(() {});
+      setState(() {
+        count++;
+      });
     } catch (e) {
       print('!!!! Error: $e');
     } finally {
-      setState(() {
-        print(count);
-        count++;
-      });
       Navigator.of(context).push(
         MaterialPageRoute(
           settings: RouteSettings(name: '/Display'),
@@ -87,27 +85,28 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
       appBar: AppBar(title: const Text('Your room')),
       body: SingleChildScrollView(
         child: Container(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.file(widget.image), // Image (In file format) here
-                const Padding(
-                  padding: EdgeInsets.only(top: 30),
-                  child: Text(
-                    'Tell us more about your room',
-                    style: TextStyle(fontSize: 25),
-                  ),
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.file(widget.image), // Image (In file format) here
+              const Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Text(
+                  'Describe the design type and room type',
+                  style: TextStyle(fontSize: 20),
                 ),
-                UserPromts(
-                  image: widget.image,
-                  count: count,
-                  textController: textController,
-                  uploadImgAndPrompts: uploadImgAndPrompts,
-                ),
-              ],
-            )),
+              ),
+              UserPromts(
+                image: widget.image,
+                count: count,
+                textController: textController,
+                uploadImgAndPrompts: uploadImgAndPrompts,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

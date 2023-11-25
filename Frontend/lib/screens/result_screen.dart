@@ -1,9 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:interiorschief/main.dart';
-import 'package:interiorschief/screens/main_screen.dart';
 
 class ResultScreen extends StatefulWidget {
   final String userPrompts;
@@ -16,10 +11,6 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ResultScreen> {
-  void goBackToMain() {
-    Navigator.popUntil(context, ModalRoute.withName('/Main'));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +23,6 @@ class _ChatScreenState extends State<ResultScreen> {
           children: <Widget>[
             const CircularProgressIndicator(),
             const Text('Some image should go here...'),
-            ElevatedButton(
-              onPressed: goBackToMain,
-              child: const Text(
-                'Go back',
-                style: TextStyle(
-                    fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ),
           ],
         ),
       ),

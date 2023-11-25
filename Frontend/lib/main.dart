@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('I am doomed as frick'), backgroundColor: Colors.amberAccent),
+          title: const Text('Interiors chief'), backgroundColor: Colors.amberAccent),
       body: Container(
         width: double.infinity,
         child: widget.img == null
