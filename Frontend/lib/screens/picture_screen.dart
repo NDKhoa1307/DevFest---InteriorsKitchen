@@ -4,11 +4,8 @@ import '../widgets/user_prompts.dart';
 
 // A widget that displays the picture taken by the user.
 class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-  final String fileString = '';
-  const DisplayPictureScreen({super.key, required this.imagePath});
-
-  void convertToJson() {}
+  final File image;
+  const DisplayPictureScreen({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,7 @@ class DisplayPictureScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.file(File(imagePath)), // Image here
+                Image.file(image), // Image (In file format) here
                 const Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Text(
@@ -29,7 +26,7 @@ class DisplayPictureScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
-                UserPromts(imagePath: imagePath),
+                UserPromts(image: image),
               ],
             )),
       ),
