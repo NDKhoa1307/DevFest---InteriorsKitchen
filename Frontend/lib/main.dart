@@ -1,15 +1,10 @@
 import 'dart:io';
 
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:gal/gal.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:interiorschief/screens/main_screen.dart';
-import 'package:interiorschief/widgets/padding_15.dart';
 import 'package:interiorschief/widgets/taking_img.dart';
 
 import 'screens/picture_screen.dart';
-import 'screens/take_picture_screen.dart';
 
 Future<void> main() async {
   runApp(MyApp());
@@ -41,33 +36,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Future pickImg() async {
     final img = await ImagePicker().pickImage(source: ImageSource.gallery);
-    // Gia su ko luu
     setState(() {
       widget.img = File(img!.path);
     });
-
-    // setState(() {
-    //   widget.img = File(img!.path);
-    // });
-    // print('Img path: ${widget.img}');
   }
 
   Future takeImg() async {
     final img = await ImagePicker().pickImage(source: ImageSource.camera);
-    // What if ko luu
     setState(() {
       widget.img = File(img!.path);
     });
-    // await Gal.putImage(img!.path);
-    // setState(() {
-    //   widget.img = File(img.path);
-    // });
-    // print('Img path: ${widget.img}');
   }
 
   void forwardToPictureScreen() {
     Navigator.of(context).push(
       MaterialPageRoute(
+        settings: RouteSettings(name: '/Main'),
         builder: (context) => DisplayPictureScreen(
           image: widget.img!,
         ),
