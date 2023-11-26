@@ -1,0 +1,10 @@
+ipykernel
+opencv-python
+flask
+numpy
+torch
+diffusers
+safetensors
+omegaconf
+accelerate==0.20.3
+decor8ai
