@@ -34,7 +34,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
       var length = await widget.image.length();
 
       var multipartFile =
-          http.MultipartFile('image', stream, length, filename: 'img$count.jpg');
+          http.MultipartFile('image', stream, length, filename: '00$count.jpg');
       request.files.add(multipartFile);
 
       // Get the app's local directory
@@ -50,7 +50,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
         'txt',
         txtStream,
         txtLength,
-        filename: 'prompt$count.txt',
+        filename: '00$count.txt',
       );
       request.files.add(txtMultipartFile);
 
