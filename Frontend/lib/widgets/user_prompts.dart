@@ -1,25 +1,24 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:interiorschief/screens/result_screen.dart';
 
 class UserPromts extends StatefulWidget {
-  final String imagePath;
-  const UserPromts({required this.imagePath, super.key});
+  final File image;
+  final TextEditingController textController;
+  String? message;
+  int count = 0;
+  final VoidCallback uploadImgAndPrompts;
+  UserPromts(
+      {required this.count,
+      this.message,
+      required this.textController,
+      required this.image,
+      required this.uploadImgAndPrompts});
 
   @override
   State<UserPromts> createState() => _UserPromtsState();
 }
 
 class _UserPromtsState extends State<UserPromts> {
-  final textController = TextEditingController();
-  String userPrompt = 'default value';
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    textController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,21 +29,12 @@ class _UserPromtsState extends State<UserPromts> {
             keyboardType: TextInputType.multiline,
             maxLines: null,
             decoration: const InputDecoration(labelText: 'Type here:'),
-            controller: textController,
+            controller: widget.textController,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ResultScreen(
-                      userPrompts: userPrompt,
-                      fileString: widget.imagePath,
-                    ),
-                  ),
-                );
-              },
+              onPressed: widget.uploadImgAndPrompts,
               child: const Text(
                 'Sumbit',
                 style: TextStyle(

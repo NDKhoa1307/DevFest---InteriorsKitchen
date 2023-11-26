@@ -15,6 +15,17 @@ class _ChatScreenState extends State<ResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Result')),
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const CircularProgressIndicator(),
+            const Text('Some image should go here...'),
+          ],
+        ),
+      ),
     );
   }
 }
